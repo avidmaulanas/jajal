@@ -1,0 +1,15 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" loaded="pageLoaded">
+  <Page.actionBar>
+    <ActionBar title="Login">
+      <ActionBar.actionItems>
+        <ActionItem tap="{{ tapCancel }}"  ios.systemIcon="1" android.systemIcon="ic_menu_close_clear_cancel" android.position="right"/>
+      </ActionBar.actionItems>
+    </ActionBar>
+  </Page.actionBar>
+  <StackLayout cssClass="login">
+    <TextField autocorrect="false" autocapitalizationType="none" hint="email" keyboardType="email" class="email" />
+    <TextField secure="true" hint="password" class="password" />
+    <ActionItem text="Forgotten password?" link="passwordRecovery" cssClass="text-button" />
+    <Button text="Login" tap="{{ tapLogin }}" cssClass="primary-button" />
+  </StackLayout>
+</Page>

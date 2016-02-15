@@ -4,7 +4,7 @@
     margin: 20;
 }
 
-button {
+.btn-tap {
     font-size: 42;
     horizontal-align: center;
 }
@@ -13,4 +13,9 @@ button {
     font-size: 20;
     color: #284848;
     horizontal-align: center;
+}
+
+.login {
+  margin: 15;
+  font-size: 14;
 }

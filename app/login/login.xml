@@ -7,8 +7,9 @@
     </ActionBar>
   </Page.actionBar>
   <StackLayout cssClass="login">
-    <TextField autocorrect="false" autocapitalizationType="none" hint="email" keyboardType="email" class="email" />
-    <TextField secure="true" hint="password" class="password" />
+    <TextField text="{{ subdomain }}" autocorrect="false" autocapitalizationType="none" hint="subdomain" keyboardType="subdomain" class="subdomain" />
+    <TextField text="{{ email }}" autocorrect="false" autocapitalizationType="none" hint="email" keyboardType="email" class="email" />
+    <TextField text="{{ password }}" secure="true" hint="password" class="password" />
     <ActionItem text="Forgotten password?" link="passwordRecovery" cssClass="text-button" />
     <Button text="Login" tap="{{ tapLogin }}" cssClass="primary-button" />
   </StackLayout>

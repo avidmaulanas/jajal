@@ -1,15 +1,16 @@
 <Page xmlns="http://schemas.nativescript.org/tns.xsd" loaded="pageLoaded">
-  <StackLayout>
-    <Label text="Tap the button" class="title"/>
-    <Button text="TAP" tap="{{ tapAction }}" />
-    <Label text="{{ message }}" class="message" textWrap="true"/>
-  </StackLayout>
   <Page.actionBar>
     <ActionBar title="Jajal">
       <ActionBar.actionItems>
         <ActionItem text="Reset" tap="{{ tapReset }}" ios.position="right"  android.position="popup"/>
+        <ActionItem text="Login" tap="{{ tapLogin }}" ios.position="right"  android.position="popup"/>
         <ActionItem text="About" tap="{{ tapAbout }}" ios.position="right"  android.position="popup"/>
       </ActionBar.actionItems>
     </ActionBar>
   </Page.actionBar>
+  <StackLayout>
+    <Label text="Tap the button" class="title"/>
+    <Button text="TAP" tap="{{ tapAction }}" cssClass="btn-tap" />
+    <Label text="{{ message }}" class="message" textWrap="true"/>
+  </StackLayout>
 </Page>

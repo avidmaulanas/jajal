@@ -2,6 +2,7 @@ var observable = require("data/observable");
 var http = require("http");
 var frames = require("ui/frame");
 var dialogs = require("ui/dialogs");
+var domain = "http://192.168.0.23:3001";
 
 var LoginViewModel = (function (_super) {
     __extends(LoginViewModel, _super);
@@ -10,13 +11,7 @@ var LoginViewModel = (function (_super) {
     }
 
     LoginViewModel.prototype.tapLogin = function () {
-        dialogs.alert({
-          title: "About",
-          message: this.email,
-          okButtonText: "OK"
-        }).then(function () {
-          console.log("Dialog closed!");
-        });
+        buatLogin(this.subdomain, this.email, this.password);
     };
 
     LoginViewModel.prototype.tapCancel = function () {
@@ -24,21 +19,32 @@ var LoginViewModel = (function (_super) {
     };
 
 
-    buatLogin = function (data) {
+    buatLogin = function (subdomain, email, password) {
         var result;
         http.request({
-            url: "https://httpbin.org/post",
+            url: domain + "/api/v1/employees/login_account",
             method: "POST",
             headers: { "Content-Type": "application/json" },
             content: JSON.stringify({
-                subdomain: data.subdomain,
-                email: data.email,
-                password: data.password
+                subdomain: subdomain,
+                email: email,
+                password: password
             })
 
         }).then(function (response) {
-            result = response.content.toJSON();
-            console.log(result);
+            result = JSON.parse(response.content);
+            console.log(JSON.stringify(result));
+            localStorage.setItem("isLogin", true);
+            localStorage.setItem("subdomain", result.subdomain);
+            localStorage.setItem("userToken", result.token);
+            dialogs.alert({
+              title: "Success Login",
+              message: "Subdomain: " + result.subdomain + "\n" +
+                "Token: " + result.token + "\n",
+              okButtonText: "OK"
+            }).then(function () {
+              console.log("Dialog closed!");
+            });
         }, function (e) {
             console.log("Error occurred " + e);
         });
